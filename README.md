@@ -6,27 +6,32 @@ This Action for [yarn](https://yarnpkg.com/en/) enables arbitrary actions with t
 
 An example workflow to lint and test:
 
-```hcl
+```
 workflow "Main" {
   on = "push"
-  resolves = ["Lint", "Test"]
+  resolves = ["Build"]
 }
 
 action "Install" {
-  uses = "docker://justinharringa/actions-yarn:latest"
+  uses = "docker://justinharringa/actions-yarn:master"
   args = "install"
 }
 
-action "Lint" {
-  needs = "Install"
-  uses = "docker://justinharringa/actions-yarn:latest"
-  args = "lint"
+action "Test" {
+  uses = "docker://justinharringa/actions-yarn:master"
+  args = "test"
 }
 
-action "Test" {
-  needs = "Install"
-  uses = "docker://justinharringa/actions-yarn:latest"
-  args = "test"
+action "Filters for GitHub Actions" {
+  needs = ["Test", "Install"]
+  uses = "actions/bin/filter@b2bea07"
+  args = "branch master"
+}
+
+action "Build" {
+  needs = "Filters for GitHub Actions"
+  uses = "docker://justinharringa/actions-yarn:master"
+  args = "build"
 }
 ```
 
