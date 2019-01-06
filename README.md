@@ -13,19 +13,22 @@ workflow "Main" {
 }
 
 action "Install" {
-  uses = "docker://culturehq/actions-yarn:latest"
+  uses = "docker://justinharringa/actions-yarn:latest"
   args = "install"
 }
 
 action "Lint" {
   needs = "Install"
-  uses = "docker://culturehq/actions-yarn:latest"
+  uses = "docker://justinharringa/actions-yarn:latest"
   args = "lint"
 }
 
 action "Test" {
   needs = "Install"
-  uses = "docker://culturehq/actions-yarn:latest"
+  uses = "docker://justinharringa/actions-yarn:latest"
   args = "test"
 }
 ```
+
+## Credit
+Credit goes to [CultureHQ and their original repo](https://github.com/CultureHQ/actions-yarn)
