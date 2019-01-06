@@ -4,7 +4,7 @@ This Action for [yarn](https://yarnpkg.com/en/) enables arbitrary actions with t
 
 ## Usage
 
-An example workflow to lint and test:
+An example workflow to test and then build only on `master`:
 
 ```
 workflow "Main" {
