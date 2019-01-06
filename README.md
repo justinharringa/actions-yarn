@@ -15,15 +15,22 @@ workflow "Main" {
 action "Install" {
   uses = "docker://justinharringa/actions-yarn:master"
   args = "install"
+  env = {
+    CI = "true"
+  }
 }
 
 action "Test" {
+  needs = "Install"
   uses = "docker://justinharringa/actions-yarn:master"
   args = "test"
+  env = {
+    CI = "true"
+  }
 }
 
 action "Filters for GitHub Actions" {
-  needs = ["Test", "Install"]
+  needs = ["Test"]
   uses = "actions/bin/filter@b2bea07"
   args = "branch master"
 }
@@ -32,6 +39,9 @@ action "Build" {
   needs = "Filters for GitHub Actions"
   uses = "docker://justinharringa/actions-yarn:master"
   args = "build"
+  env = {
+    CI = "true"
+  }
 }
 ```
 
