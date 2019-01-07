@@ -33,7 +33,7 @@ action "Docker Build" {
 action "Docker Tag" {
   needs = "Docker Build"
   uses = "actions/docker/tag@master"
-  args = "actions-yarn justinharringa/actions-yarn --no-latest"
+  args = "actions-yarn justinharringa/actions-yarn"
 }
 
 action "Docker Login" {
