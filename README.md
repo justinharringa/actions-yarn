@@ -1,4 +1,8 @@
-# GitHub Actions for yarn
+# GitHub Actions for yarn (DEPRECATED)
+
+*NOTE: This is basically unnecessary. You can simply just use the `node:13-slim` or whatever container you like and just `run: yarn build` or whatever yarn command you wish in your GitHub Action. I will be archiving this repository.*
+
+
 
 This Action for [yarn](https://yarnpkg.com/en/) enables arbitrary actions with the `yarn` command-line client. Uses the node 11 docker image as its base.
 
