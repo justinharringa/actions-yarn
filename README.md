@@ -1,6 +1,6 @@
 # GitHub Actions for yarn (DEPRECATED)
 
-*NOTE: This is basically unnecessary. You can simply just use the `node:13-slim` or whatever container you like and just run `yarn build` or whatever yarn command you wish as the args to the node container in your GitHub Action. I will be archiving this repository.*
+*NOTE: This is basically unnecessary. You can simply just use the `node:13-slim` or whatever tag you like for the `node` image and just run `yarn build` or whatever yarn command you wish as the args to the node container in your GitHub Action. I will be archiving this repository.*
 
 Example:
 
